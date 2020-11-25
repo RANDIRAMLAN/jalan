@@ -1,12 +1,14 @@
-<?php namespace App\Controllers;
+<?php
+
+namespace App\Controllers;
 
 class Home extends BaseController
 {
 	public function index()
 	{
-		return view('welcome_message');
+		$data = [
+			'judul' => 'JL - Index'
+		];
+		return view('Home/index', $data);
 	}
-
-	//--------------------------------------------------------------------
-
 }

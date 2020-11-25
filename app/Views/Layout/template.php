@@ -7,8 +7,9 @@
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/dataTables.bootstrap4.min.css" />
     <link rel="stylesheet" href="/css/jquery-ui.css">
+    <link rel="stylesheet" href="/css/style.css">
 
-    <title><?= $title; ?></title>
+    <title><?= $judul; ?></title>
 </head>
 
 <body>
@@ -21,6 +22,9 @@
     <script type="text/javascript" src="/js/dataTables.bootstrap4.min.js"></script>
     <script type="text/javascript" src="/js/jquery-ui.js"></script>
     <script type="text/javascript" src="/js/font-awesome.js"></script>
+    <script type="text/javascript" src="/js/masuk.js"></script>
+    <script type="text/javascript" src="/js/daftar.js"></script>
+    <script type="text/javascript" src="/js/lupa.js"></script>
 </body>
 
 </html>
