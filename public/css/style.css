@@ -1,11 +1,11 @@
-.margin_card {
+.margin {
   margin-top: 75px;
   margin-left: 10px;
   margin-right: 10px;
 }
-.margin_navbar {
-  margin-left: 10px;
-  margin-right: 10px;
+.margin_card {
+  margin-left: 0px;
+  margin-right: 0px;
 }
 .higth_picture {
   height: 150px;

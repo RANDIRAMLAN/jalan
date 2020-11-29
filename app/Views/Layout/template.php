@@ -25,6 +25,10 @@
     <script type="text/javascript" src="/js/masuk.js"></script>
     <script type="text/javascript" src="/js/daftar.js"></script>
     <script type="text/javascript" src="/js/lupa.js"></script>
+    <script type="text/javascript" src="/js/home.js"></script>
+    <script type="text/javascript" src="/js/tambah_destinasi.js"></script>
+    <script type="text/javascript" src="/js/deskripsi.js"></script>
+    <script type="text/javascript" src="/js/foto.js"></script>
 </body>
 
 </html>
