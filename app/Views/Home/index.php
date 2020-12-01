@@ -2,9 +2,8 @@
 <?= $this->section('content'); ?>
 <div class="margin">
     <div class="col col-md-12">
-        <div class="alert alert-success text-center" role="alert">
-            Kata Sandi Berhasil Diganti. Silahkan Masuk Menggunakan Kata Sandi Yang Baru.
-        </div>
+        <p id="pesan" class="alert-success text-center" role="alert">
+        </p>
     </div>
     <div class="row margin_card">
         <div class="col col-md-6">
@@ -70,19 +69,24 @@
                         <form class="daftar_app" method="post">
                             <?= csrf_field(); ?>
                             <div class="form-group">
+                                <label for="nama">Nama</label>
+                                <input type="text" name="nama" id="nama" class="form-control buat_akun" autocomplete="off">
+                                <small class="error_nama invalid-feedback buat_akun"></small>
+                            </div>
+                            <div class="form-group">
                                 <label for="daftar_email">Email</label>
-                                <input type="text" name="email" id="daftar_email" class="form-control" autocomplete="off">
-                                <small class="error_daftar_email invalid-feedback"></small>
+                                <input type="text" name="email" id="daftar_email" class="form-control buat_akun" autocomplete="off">
+                                <small class="error_daftar_email invalid-feedback buat_akun"></small>
                             </div>
                             <div class="form-group">
                                 <label for="daftar_kata_sandi">Kata Sandi</label>
-                                <input type="password" name="kata_sandi" id="daftar_kata_sandi" class="form-control" autocomplete="off">
-                                <small class="error_daftar_kata_sandi invalid-feedback"></small>
+                                <input type="password" name="kata_sandi" id="daftar_kata_sandi" class="form-control buat_akun" autocomplete="off">
+                                <small class="error_daftar_kata_sandi invalid-feedback buat_akun"></small>
                             </div>
                             <div class="form-group">
                                 <label for="daftar_konfirmasi_kata_sandi">Konfirmasi Kata Sandi</label>
-                                <input type="password" name="konfirmasi_kata_sandi" id="daftar_konfirmasi_kata_sandi" class="form-control" autocomplete="off">
-                                <small class="error_daftar_konfirmasi_kata_sandi"></small>
+                                <input type="password" name="konfirmasi_kata_sandi" id="daftar_konfirmasi_kata_sandi" class="form-control buat_akun" autocomplete="off">
+                                <small class="error_daftar_konfirmasi_kata_sandi invalid-feedback buat_akun"></small>
                             </div>
                     </div>
                     <div class="modal-footer">
@@ -107,22 +111,22 @@
                             <?= csrf_field(); ?>
                             <div class="form-group">
                                 <label for="daftar_email">Email</label>
-                                <input type="text" name="email" id="lupa_email" class="form-control" autocomplete="off">
-                                <small class="error_lupa_email invalid-feedback"></small>
+                                <input type="text" name="email" id="lupa_email" class="form-control lupa_sandi" autocomplete="off">
+                                <small class="error_lupa_email invalid-feedback lupa_sandi"></small>
                             </div>
                             <div class="form-group">
                                 <label for="lupa_kata_sandi">Kata Sandi Baru</label>
-                                <input type="password" name="kata_sandi" id="lupa_kata_sandi" class="form-control" autocomplete="off">
-                                <small class="error_lupa_kata_sandi invalid-feedback"></small>
+                                <input type="password" name="kata_sandi" id="lupa_kata_sandi" class="form-control lupa_sandi" autocomplete="off">
+                                <small class="error_lupa_kata_sandi invalid-feedback lupa_sandi"></small>
                             </div>
                             <div class="form-group">
                                 <label for="lupa_konfirmasi_kata_sandi">Konfirmasi Kata Sandi Baru</label>
-                                <input type="password" name="lupa_kata_sandi" id="lupa_konfirmasi_kata_sandi" class="form-control" autocomplete="off">
-                                <small class="error_lupa_konfirmasi_kata_sandi"></small>
+                                <input type="password" name="konfirmasi_kata_sandi" id="lupa_konfirmasi_kata_sandi" class="form-control lupa_sandi" autocomplete="off">
+                                <small class="error_lupa_konfirmasi_kata_sandi invalid-feedback lupa_sandi"></small>
                             </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-outline-primary">Daftar</button>
+                        <button type="submit" class="btn btn-outline-primary">Simpan</button>
                     </div>
                     </form>
                 </div>
