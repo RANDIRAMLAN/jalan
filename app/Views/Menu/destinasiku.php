@@ -1,36 +1,5 @@
 <?= $this->extend('Layout/template'); ?>
 <?= $this->section('content'); ?>
-<!-- buat Destinasi -->
-<div class="modal fade" id="buat_destinasi" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Buat Destinasi</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form class="simpan_destinasi" accept="post">
-                    <?= csrf_field(); ?>
-                    <div class="form-group">
-                        <label for="judul">Judul Destinasi</label>
-                        <input type="text" name="judul" id="judul" class="form-control">
-                        <small class="error_judul invalid-feedback"></small>
-                    </div>
-                    <div class="form-group">
-                        <label for="deskripsi">Deskripsi Singkat</label>
-                        <textarea name="deskripsi" id="deskripsi" cols="30" rows="10" class="form-control"></textarea>
-                        <small class="error_deskripsi invalid-feedback"></small>
-                    </div>
-            </div>
-            <div class="modal-footer">
-                <button type="submit" class="btn btn-outline-primary">Simpan</button>
-            </div>
-            </form>
-        </div>
-    </div>
-</div>
 <!-- list destinasiku -->
 <div class="margin">
     <div class="col col-md-12">

@@ -8,7 +8,7 @@ class MenuSeeder extends \CodeIgniter\Database\Seeder
     {
         $data1 = [
             'menu'        => 'Masuk',
-            'attribut'    => 'masuk',
+            'attribut'   => 'masuk',
             'role_id'     => 3,
             'icon'        => ''
         ];
@@ -21,14 +21,31 @@ class MenuSeeder extends \CodeIgniter\Database\Seeder
         ];
 
         $data3 = [
-            'menu'        => '',
+            'menu'        => 'Keluar',
             'attribut'    => '',
             'role_id'     => 2,
-            'icon'        => 'fas fa-user-circle'
+            'icon'        => ''
         ];
+
+        $data4 = [
+            'menu'        => 'Destinasiku',
+            'attribut'    => 'destinasiku',
+            'role_id'     => 2,
+            'icon'        => ''
+        ];
+
+        $data5 = [
+            'menu'        => 'Buat Destinasi',
+            'attribut'    => 'buat_destinasi',
+            'role_id'     => 2,
+            'icon'        => ''
+        ];
+
         // Using Query Builder
         $this->db->table('menu')->insert($data1);
         $this->db->table('menu')->insert($data2);
         $this->db->table('menu')->insert($data3);
+        $this->db->table('menu')->insert($data4);
+        $this->db->table('menu')->insert($data5);
     }
 }

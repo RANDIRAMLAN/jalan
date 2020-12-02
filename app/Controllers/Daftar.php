@@ -18,9 +18,10 @@ class Daftar extends BaseController
         if ($this->request->isAJAX()) {
             if (!$this->validate([
                 'nama' => [
-                    'rules' => 'required',
+                    'rules' => 'required|max_length[11]',
                     'errors' => [
-                        'required' => 'Nama Tidak Boleh Kosong'
+                        'required' => 'Nama Tidak Boleh Kosong',
+                        'max_length' => 'Maksimal 11 Karakter'
                     ]
                 ],
                 'email' => [
