@@ -38,13 +38,13 @@
                             <?= csrf_field(); ?>
                             <div class="form-group">
                                 <label for="email">Email</label>
-                                <input type="text" name="email" id="email" class="form-control" autocomplete="off">
-                                <small class="error_email invalid-feedback"></small>
+                                <input type="text" name="email" id="masuk_email" class="form-control" autocomplete="off">
+                                <small class="error_masuk_email invalid-feedback"></small>
                             </div>
                             <div class="form-group">
                                 <label for="kata_sandi">Kata Sandi</label>
-                                <input type="password" name="kata_sandi" id="kata_sandi" class="form-control" autocomplete="off">
-                                <small class="error_kata_sandi invalid-feedback"></small>
+                                <input type="password" name="kata_sandi" id="masuk_kata_sandi" class="form-control" autocomplete="off">
+                                <small class="error_masuk_kata_sandi invalid-feedback"></small>
                             </div>
                     </div>
                     <div class="modal-footer">
@@ -172,6 +172,22 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-primary">Tanya Penulis</button>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal Berhasil masuk aplikasi -->
+<div class="modal fade" id="informasi" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+        <div class="modal-content text-center">
+            <div class="modal-header">
+                <h5 class="modal-title ml-auto mr-auto text-primary" id="exampleModalLabel"><strong>Selamat Datang</strong></h5>
+            </div>
+            <div class="modal-body">
+                <p class="informasi"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary ml-auto mr-auto" data-dismiss="modal">OK</button>
             </div>
         </div>
     </div>

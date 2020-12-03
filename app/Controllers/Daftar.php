@@ -60,7 +60,8 @@ class Daftar extends BaseController
             } else {
                 $nama = $this->request->getVar('nama');
                 $email = $this->request->getVar('email');
-                $kata_sandi = password_hash($this->request->getVar('kata_sandi'), PASSWORD_DEFAULT);
+                $password = $this->request->getVar('kata_sandi');
+                $kata_sandi = password_hash($password, PASSWORD_DEFAULT);
                 $this->UserModel->simpan($nama, $email, $kata_sandi);
                 $msg = [
                     'pesan' => 'Data Pengguna Berhasil Disimpan. Silahkan Masuk'

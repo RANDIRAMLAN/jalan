@@ -9,7 +9,7 @@ $(document).ready(function () {
         let konfirmasi_kata_sandi = $('#daftar_konfirmasi_kata_sandi').val();
         $.ajax({
             type: 'post',
-            url: 'Daftar/daftar',
+            url: '/Daftar/daftar',
             data: {
                 nama: nama,
                 email: email,

@@ -18,7 +18,8 @@ class Lupa extends BaseController
         $validation = \Config\Services::validation();
         if ($this->request->isAJAX()) {
             $email = $this->request->getVar('email');
-            $kata_sandi = password_hash($this->request->getVar('kata_sandi'), PASSWORD_DEFAULT);
+            $password = $this->request->getVar('kata_sandi');
+            $kata_sandi = password_hash($password, PASSWORD_DEFAULT);
             $periksa_email = $this->UserModel->getByEmail($email);
             if (!$this->validate([
                 'email' => [

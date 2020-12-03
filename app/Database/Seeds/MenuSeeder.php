@@ -22,7 +22,7 @@ class MenuSeeder extends \CodeIgniter\Database\Seeder
 
         $data3 = [
             'menu'        => 'Keluar',
-            'attribut'    => '',
+            'attribut'    => 'keluar',
             'role_id'     => 2,
             'icon'        => ''
         ];

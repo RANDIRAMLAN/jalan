@@ -9,7 +9,7 @@ $(document).ready(function () {
         let konfirmasi_kata_sandi = $('#lupa_konfirmasi_kata_sandi').val();
         $.ajax({
             type: 'post',
-            url: 'Lupa/lupa',
+            url: '/Lupa/lupa',
             data: {
                 email: email,
                 kata_sandi: kata_sandi,
