@@ -23,6 +23,14 @@ class Destinasi extends Migration
 				'type'           => 'VARCHAR',
 				'constraint'     => '100',
 			],
+			'status' => [
+				'type'           => 'VARCHAR',
+				'constraint'     => '10',
+			],
+			'penulis' => [
+				'type'           => 'VARCHAR',
+				'constraint'     => '50',
+			],
 			'created_at' => [
 				'type'           => 'DATETIME',
 				'null'           => true
