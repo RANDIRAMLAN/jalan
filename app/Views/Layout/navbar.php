@@ -35,13 +35,13 @@
                     <?= csrf_field(); ?>
                     <div class="form-group">
                         <label for="judul">Judul Destinasi</label>
-                        <input type="text" name="judul" id="judul" class="form-control">
-                        <small class="error_judul invalid-feedback"></small>
+                        <input type="text" name="judul_destinasi" id="judul_destinasi" class="form-control tambah_destinasi">
+                        <small class="error_judul_destinasi tambah_destinasi invalid-feedback"></small>
                     </div>
                     <div class="form-group">
                         <label for="deskripsi">Deskripsi Singkat</label>
-                        <textarea name="deskripsi" id="deskripsi" cols="30" rows="10" class="form-control"></textarea>
-                        <small class="error_deskripsi invalid-feedback"></small>
+                        <textarea name="deskripsi_singkat" id="deskripsi_singkat" cols="30" rows="10" class="form-control tambah_destinasi"></textarea>
+                        <small class="error_deskripsi_singkat tambah_destinasi invalid-feedback"></small>
                     </div>
             </div>
             <div class="modal-footer">

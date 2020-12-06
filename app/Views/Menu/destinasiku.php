@@ -3,9 +3,8 @@
 <!-- list destinasiku -->
 <div class="margin">
     <div class="col col-md-12">
-        <div class="alert alert-success text-center" role="alert">
-            Kata Sandi Berhasil Diganti. Silahkan Masuk Menggunakan Kata Sandi Yang Baru.
-        </div>
+        <p id="pesan_tambah_destinasi" class="alert-success text-center" role="alert">
+        </p>
     </div>
     <div class="row margin_card">
         <div class="col col-md-6">
@@ -16,7 +15,7 @@
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
-                            <h5 class="card-title">Pulau Lombok</h5>
+                            <h5 class="card-title">Lorem ipsum dolor sit amet consectetur adipisicing elit.</h5>
                             <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
                                 <button class="btn btn-outline-primary btn-sm tambah_deskripsi">Deskripsi Lengkap</button>
                                 <button class="btn btn-outline-primary btn-sm tambah_foto">Foto</button>
