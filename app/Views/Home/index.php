@@ -10,7 +10,7 @@
             <div class="card mb-3 border-primary">
                 <div class="row no-gutters">
                     <div class="col-md-4">
-                        <img src="/img/Destinasi/lombok.jpg" class="card-img higth_picture" alt="...">
+                        <img src="/img/Destinasi/Default.jpg" class="card-img higth_picture" alt="...">
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
@@ -147,13 +147,13 @@
                     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner" style="height: 250px;">
                             <div class="carousel-item active">
-                                <img src="/img/Destinasi/lombok.jpg" class="d-block w-100" alt="...">
+                                <img src="/img/Destinasi/Default.jpg" class="d-block w-100" alt="...">
                             </div>
                             <div class="carousel-item">
-                                <img src="/img/Destinasi/sumba.jpg" class="d-block w-100" alt="...">
+                                <img src="/img/Destinasi/Default.jpg" class="d-block w-100" alt="...">
                             </div>
                             <div class="carousel-item">
-                                <img src="/img/Destinasi/lombok.jpg" class="d-block w-100" alt="...">
+                                <img src="/img/Destinasi/Default.jpg" class="d-block w-100" alt="...">
                             </div>
                         </div>
                         <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -175,19 +175,19 @@
             </div>
         </div>
     </div>
-</div>
-<!-- Modal Berhasil masuk aplikasi -->
-<div class="modal fade" id="informasi" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-sm modal-dialog-centered">
-        <div class="modal-content text-center">
-            <div class="modal-header">
-                <h5 class="modal-title ml-auto mr-auto text-primary" id="exampleModalLabel"><strong>Selamat Datang</strong></h5>
-            </div>
-            <div class="modal-body">
-                <p class="informasi"></p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary ml-auto mr-auto" data-dismiss="modal">OK</button>
+    <!-- Modal Berhasil masuk aplikasi -->
+    <div class="modal fade" id="informasi" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm modal-dialog-centered">
+            <div class="modal-content text-center">
+                <div class="modal-header">
+                    <h5 class="modal-title ml-auto mr-auto text-primary" id="exampleModalLabel"><strong>Selamat Datang</strong></h5>
+                </div>
+                <div class="modal-body">
+                    <p class="informasi"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary ml-auto mr-auto" data-dismiss="modal">OK</button>
+                </div>
             </div>
         </div>
     </div>

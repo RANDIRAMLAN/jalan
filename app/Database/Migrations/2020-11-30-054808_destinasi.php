@@ -23,9 +23,13 @@ class Destinasi extends Migration
 				'type'           => 'VARCHAR',
 				'constraint'     => '100',
 			],
+			'foto' => [
+				'type'           => 'VARCHAR',
+				'constraint'     => '255',
+			],
 			'status' => [
 				'type'           => 'VARCHAR',
-				'constraint'     => '10',
+				'constraint'     => '12',
 			],
 			'penulis' => [
 				'type'           => 'VARCHAR',

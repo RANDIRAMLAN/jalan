@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $('.tambah_deskripsi').on('click', function () {
+    $('#daftar_destinasku').on('click', '.tambah_deskripsi', function () {
         $('#tambah_deskripsi').modal('show');
     });
 });

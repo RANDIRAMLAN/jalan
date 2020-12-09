@@ -42,14 +42,31 @@ class Destinasi extends BaseController
                 $email = session()->get('email');
                 $judul_destinasi = $this->request->getVar('judul_destinasi');
                 $deskripsi_singkat = $this->request->getVar('deskripsi_singkat');
+                $foto = 'Default.jpg';
                 $status = 'Tidak Aktif';
                 $penulis = $email;
-                $this->DestinasiModel->tambah_destinasi($judul_destinasi, $deskripsi_singkat, $status, $penulis);
+                $this->DestinasiModel->tambah_destinasi($judul_destinasi, $deskripsi_singkat, $foto, $status, $penulis);
                 $msg = [
                     'pesan' => 'Destinasi Berhasil Ditambah'
                 ];
             }
             echo json_encode($msg);
+        } else {
+            return redirect()->to('/Menu/destinasiku');
+        }
+    }
+    // menampilkan list  destinasiku
+    public function destinasiku()
+    {
+        if ($this->request->isAJAX()) {
+            $cari = $this->request->getVar('cari');
+            $email = session()->get('email');
+            if ($cari) {
+                $destinasiku = $this->DestinasiModel->cari($cari, $email);
+            } else {
+                $destinasiku = $this->DestinasiModel->tampilkan($email);
+            }
+            echo json_encode($destinasiku);
         } else {
             return redirect()->to('/Menu/destinasiku');
         }
