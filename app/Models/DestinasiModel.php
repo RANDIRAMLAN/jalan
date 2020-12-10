@@ -41,4 +41,18 @@ class DestinasiModel extends Model
     {
         return $this->where(['penulis' => $email])->findAll();
     }
+    // cari destinasi by Id
+    public function cariById($id)
+    {
+        return $this->where(['id' => $id])->first();
+    }
+    // ganti foto_sampul
+
+    public function gantiFotoSampul($id, $foto_sampul)
+    {
+        return $this
+            ->set(['foto' => $foto_sampul])
+            ->where(['id' => $id])
+            ->update();
+    }
 }

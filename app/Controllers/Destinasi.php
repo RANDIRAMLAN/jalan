@@ -3,13 +3,16 @@
 namespace App\Controllers;
 
 use App\Models\DestinasiModel;
+use App\Models\FotoDestinasiModel;
 
 class Destinasi extends BaseController
 {
     protected $DestinasiModel;
+    protected $FotoDestinasiModel;
     public function __construct()
     {
         $this->DestinasiModel = new DestinasiModel();
+        $this->FotoDestinasiModel = new FotoDestinasiModel();
     }
     // buat destinasi
     public function tambah_destinasi()
@@ -67,6 +70,80 @@ class Destinasi extends BaseController
                 $destinasiku = $this->DestinasiModel->tampilkan($email);
             }
             echo json_encode($destinasiku);
+        } else {
+            return redirect()->to('/Menu/destinasiku');
+        }
+    }
+    // ubah foto sampul
+    public function foto_sampul()
+    {
+        $validation = \Config\Services::validation();
+        if ($this->request->isAJAX()) {
+            if (!$this->validate([
+                'foto_sampul' => [
+                    'rules' => 'uploaded[foto_sampul]|is_image[foto_sampul]|mime_in[foto_sampul,image/jpg,image/jpeg,image/png]',
+                    'errors' => [
+                        'uploaded' => 'Foto Sampul Tidak Boleh Kosong',
+                        'is_image' => 'Hanya Foto Yang Dapat Diunggah',
+                        'mime_in' => 'Format Gambar Harus .jeg, .jpg or .png'
+                    ]
+                ]
+            ])) {
+                $msg = [
+                    'error' => [
+                        'foto_sampul' => $validation->getError('foto_sampul')
+                    ]
+                ];
+            } else {
+                $id = $this->request->getVar('id_sampul');
+                $foto_sampul_baru = $this->request->getFile('foto_sampul');
+                $foto = $this->DestinasiModel->cariById($id);
+                $foto_sampul = $foto_sampul_baru->getRandomName();
+                $foto_sampul_baru->move('img/Destinasi', $foto_sampul);
+                if ($foto['foto'] != 'Default.jpg') {
+                    unlink('img/Destinasi/' . $foto['foto']);
+                }
+                $this->DestinasiModel->gantiFotoSampul($id, $foto_sampul);
+                $msg = [
+                    'pesan' => 'Foto Sampul Berhasil Diganti'
+                ];
+            }
+            echo json_encode($msg);
+        } else {
+            return redirect()->to('/Menu/destinasiku');
+        }
+    }
+    // foto destinasi
+    public function foto_destinasi()
+    {
+        $validation = \Config\Services::validation();
+        if ($this->request->isAJAX()) {
+            if (!$this->validate([
+                'foto_destinasi' => [
+                    'rules' => 'uploaded[foto_destinasi]|is_image[foto_destinasi]|mime_in[foto_destinasi,image/jpg,image/jpeg,image/png]',
+                    'errors' => [
+                        'uploaded' => 'Foto Destinasi Tidak Boleh Kosong',
+                        'is_image' => 'Hanya Foto Yang Dapat Diunggah',
+                        'mime_in' => 'Format Gambar Harus .jeg, .jpg or .png'
+                    ]
+                ]
+            ])) {
+                $msg = [
+                    'error' => [
+                        'foto_destinasi' => $validation->getError('foto_destinasi')
+                    ]
+                ];
+            } else {
+                $id = $this->request->getVar('id_destinasi');
+                $foto_destinasi = $this->request->getFile('foto_destinasi');
+                $foto = $foto_destinasi->getRandomName();
+                $foto_destinasi->move('img/Destinasi', $foto);
+                $this->FotoDestinasiModel->tambah_foto_destinasi($id, $foto);
+                $msg = [
+                    'pesan' => 'Foto Berhasil Disimpan'
+                ];
+            }
+            echo json_encode($msg);
         } else {
             return redirect()->to('/Menu/destinasiku');
         }
