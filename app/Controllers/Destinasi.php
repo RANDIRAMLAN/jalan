@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\DeskripsiModel;
 use App\Models\DestinasiModel;
 use App\Models\FotoDestinasiModel;
 
@@ -9,10 +10,12 @@ class Destinasi extends BaseController
 {
     protected $DestinasiModel;
     protected $FotoDestinasiModel;
+    protected $DeskripsiModel;
     public function __construct()
     {
         $this->DestinasiModel = new DestinasiModel();
         $this->FotoDestinasiModel = new FotoDestinasiModel();
+        $this->DeskripsiModel = new DeskripsiModel();
     }
     // buat destinasi
     public function tambah_destinasi()
@@ -143,6 +146,57 @@ class Destinasi extends BaseController
                     'pesan' => 'Foto Berhasil Disimpan'
                 ];
             }
+            echo json_encode($msg);
+        } else {
+            return redirect()->to('/Menu/destinasiku');
+        }
+    }
+    // tambah deskripsi perjalanan
+    public function tambah_deskripsi()
+    {
+        $validation = \Config\Services::validation();
+        if ($this->request->isAJAX()) {
+            if (!$this->validate([
+                'paragraf' => [
+                    'rules' => 'required|max_length[1000]',
+                    'errors' => [
+                        'required' => 'Cerita Perjalanan Tidak Boleh Kosong',
+                        'max_length' => 'Maksimal 1000 Karakter'
+                    ]
+                ]
+            ])) {
+                $msg = [
+                    'error' => [
+                        'paragraf' => $validation->getError('paragraf')
+                    ]
+                ];
+            } else {
+                $id = $this->request->getVar('id_deskripsi');
+                $paragraf = $this->request->getVar('paragraf');
+                $this->DeskripsiModel->tambah_deskripsi($id, $paragraf);
+                $msg = [
+                    'pesan' => 'Cerita Perjalanan Berhasil Disimpan'
+                ];
+            }
+            echo json_encode($msg);
+        } else {
+            return redirect()->to('/Menu/destinasiku');
+        }
+    }
+    // ubah status destinasi
+    public function ubah_status_destinasi()
+    {
+        if ($this->request->isAJAX()) {
+            $id = $this->request->getVar('id_ubah');
+            $data = $this->DestinasiModel->cariById($id);
+            if ($data['status'] == 'Tidak Aktif') {
+                $this->DestinasiModel->aktif($id);
+            } else {
+                $this->DestinasiModel->tidakAktif($id);
+            }
+            $msg = [
+                'pesan' => 'Status Berhasil DiUbah'
+            ];
             echo json_encode($msg);
         } else {
             return redirect()->to('/Menu/destinasiku');

@@ -31,6 +31,7 @@
     <script type="text/javascript" src="/js/deskripsi.js"></script>
     <script type="text/javascript" src="/js/foto.js"></script>
     <script type="text/javascript" src="/js/keluar.js"></script>
+    <script type="text/javascript" src="/js/status.js"></script>
 </body>
 
 </html>

@@ -29,7 +29,7 @@ $(document).ready(function () {
                             '<button class="btn btn-outline-primary btn-sm tambah_deskripsi ml-1" data-id ="'+destinasiku[i].id+'"><i class="fas fa-file"></i></button>'+
                             '<button class="btn btn-outline-primary btn-sm foto_destinasi ml-1" data-id ="'+destinasiku[i].id+'"><i class="fas fa-file-image"></i></button>'+
                             '<button class="btn btn-outline-primary btn-sm show_data ml-1" data-id ="'+destinasiku[i].id+'"><i class="fas fa-info"></i></button>'+
-                            '<button class="btn btn-outline-primary btn-sm ml-1" data-id ="'+destinasiku[i].id+'">'+ destinasiku[i].status +'</button>'+
+                            '<button class="btn btn-outline-primary ubah_status btn-sm ml-1" data-id ="'+destinasiku[i].id+'">'+ destinasiku[i].status +'</button>'+
                         '</div>'+
                     '</div>'+
                 '</div>'+
@@ -172,7 +172,73 @@ $('#cari').keyup(function () {
                     }, 3000);
                     show_data_destinasi();
                 }
-                console.log(data);
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
+            }
+        });
+        return false;
+    });
+    // tambah deskripsi perjalanan
+    $('.tambah_deskripsi').submit('click', function () {
+        let id_deskripsi = $('#id_deskripsi').val();
+        let paragraf = $('#paragraf').val();
+        $.ajax({
+            type: 'post',
+            url: '/Destinasi/tambah_deskripsi',
+            data: {
+                id_deskripsi: id_deskripsi,
+                paragraf: paragraf
+            },
+            dataType: 'json',
+            success: function (response) {
+                if(response.error){
+                    if(response.error.paragraf){
+                        $('#paragraf').addClass('is-invalid');
+                        $('.error_paragraf').html(response.error.paragraf);
+                    }else{
+                        $('#paragraf').removeClass('is-invalid');
+                        $('.error_paragraf').html("");
+                    }
+                }else{
+                    $('#paragraf').removeClass("is-invalid");
+                    $('#paragraf').val("");
+                    $('.error_paragraf').html("");
+                    $('#tambah_deskripsi').modal('hide');
+                    $('#pesan').addClass('alert');
+                    $('#pesan').html(response.pesan);
+                    setTimeout(() => {
+                        $('#pesan').html("");
+                        $('#pesan').removeClass('alert');
+                    }, 3000);
+                    show_data_destinasi();
+                }
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
+            }
+        });
+        return false;
+    });
+    // ubah status destinasi
+    $('.ubah_status_destinasi').submit('click', function () {
+        let id_ubah = $('#id_ubah').val();
+        $.ajax({
+            type: 'post',
+            url: '/Destinasi/ubah_status_destinasi',
+            data: {
+                id_ubah: id_ubah
+            },
+            dataType: 'json',
+            success: function (response) {
+                $('#ubah_status_destinasi').modal('hide');
+                $('#pesan').addClass('alert');
+                $('#pesan').html(response.pesan);
+                setTimeout(() => {
+                    $('#pesan').html("");
+                    $('#pesan').removeClass('alert');
+                }, 3000);
+                show_data_destinasi();
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);

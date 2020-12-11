@@ -47,11 +47,26 @@ class DestinasiModel extends Model
         return $this->where(['id' => $id])->first();
     }
     // ganti foto_sampul
-
     public function gantiFotoSampul($id, $foto_sampul)
     {
         return $this
             ->set(['foto' => $foto_sampul])
+            ->where(['id' => $id])
+            ->update();
+    }
+    // ubah status menjadi aktif
+    public function aktif($id)
+    {
+        return $this
+            ->set(['status' => 'Aktif'])
+            ->where(['id' => $id])
+            ->update();
+    }
+    // ubah status menjadi tidak  aktif
+    public function tidakAktif($id)
+    {
+        return $this
+            ->set(['status' => 'Tidak Aktif'])
             ->where(['id' => $id])
             ->update();
     }
