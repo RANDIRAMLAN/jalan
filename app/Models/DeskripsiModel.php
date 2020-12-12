@@ -19,4 +19,9 @@ class DeskripsiModel extends Model
             'paragraf' => $paragraf,
         ]);
     }
+    // cari destinasi berdasarkan id
+    public function cariById($id)
+    {
+        return $this->where(['id_destinasi' => $id])->findAll();
+    }
 }

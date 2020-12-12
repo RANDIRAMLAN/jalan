@@ -87,9 +87,9 @@
                 </div>
             </div>
         </div>
-        <!-- show data -->
-        <div class="modal fade" id="show" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-scrollable">
+        <!-- tampilkan detail destinasi -->
+        <div class="modal fade" id="tampilkan_destinasi" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">Pulau Lombok</h5>
@@ -99,16 +99,7 @@
                     </div>
                     <div class="modal-body">
                         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-                            <div class="carousel-inner" style="height: 250px;">
-                                <div class="carousel-item active">
-                                    <img src="/img/Destinasi/Default.jpg" class="d-block w-100" alt="...">
-                                </div>
-                                <div class="carousel-item">
-                                    <img src="/img/Destinasi/Default.jpg" class="d-block w-100" alt="...">
-                                </div>
-                                <div class="carousel-item">
-                                    <img src="/img/Destinasi/Default.jpg" class="d-block w-100" alt="...">
-                                </div>
+                            <div id="tampil_foto" class="carousel-inner" style="height: 350px;">
                             </div>
                             <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -120,11 +111,9 @@
                             </a>
                         </div>
                         <br>
-                        <p class="text-justify">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolorem magnam laudantium nihil exercitationem dolorum voluptatibus cumque suscipit blanditiis culpa, quia vel a saepe, asperiores facere nobis consectetur accusamus delectus deserunt reprehenderit quibusdam autem temporibus nostrum nesciunt? Aut, atque? Quo saepe quia, tempora nihil quaerat reiciendis dolor adipisci exercitationem quisquam alias.</p>
-                        <p class="text-justify">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aperiam officiis magnam autem tempore quas odio error, molestias possimus dicta ducimus numquam libero, animi sunt deserunt neque ullam praesentium modi delectus?</p>
+                        <div id="cerita_perjalanan"></div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-outline-primary">Tanya Penulis</button>
                     </div>
                 </div>
             </div>

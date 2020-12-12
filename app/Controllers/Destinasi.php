@@ -202,4 +202,22 @@ class Destinasi extends BaseController
             return redirect()->to('/Menu/destinasiku');
         }
     }
+    // tampilkan destinasi secara detail
+    public function tampilkan_data_destinasi()
+    {
+        if ($this->request->isAJAX()) {
+            $id = $this->request->getVar('id');
+            $foto_sampul = $this->DestinasiModel->cariById($id);
+            $foto = $this->FotoDestinasiModel->cariById($id);
+            $deskripsi = $this->DeskripsiModel->cariById($id);
+            $data = [
+                'foto' => $foto,
+                'foto_sampul' => $foto_sampul,
+                'deskripsi' => $deskripsi
+            ];
+            echo json_encode($data);
+        } else {
+            return redirect()->to('/Menu/destinasiku');
+        }
+    }
 }

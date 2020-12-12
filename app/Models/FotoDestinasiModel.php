@@ -19,4 +19,9 @@ class FotoDestinasiModel extends Model
             'foto' => $foto,
         ]);
     }
+    // cari destinasi berdasarkan id
+    public function cariById($id)
+    {
+        return $this->where(['id_destinasi' => $id])->findAll();
+    }
 }

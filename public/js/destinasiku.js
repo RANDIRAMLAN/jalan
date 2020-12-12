@@ -20,7 +20,7 @@ $(document).ready(function () {
                     '<div class="card mb-3 border-primary">'+
                     '<div class="row no-gutters">'+
                     '<div class="col-md-4">'+
-                        '<img src="/img/Destinasi/'+ destinasiku[i].foto +'" class="card-img higth_picture foto_sampul" data-id="'+ destinasiku[i].id +'" alt="'+ destinasiku[i].id +'">'+
+                        '<img src="/img/Destinasi/'+ destinasiku[i].foto +'" class="card-img higth_picture foto_sampul" data-id="'+ destinasiku[i].id +'" data-foto="'+ destinasiku[i].foto +'" alt="'+ destinasiku[i].id +'" type="button">'+
                     '</div>'+
                     '<div class="col-md-8">'+
                         '<div class="card-body">'+
@@ -28,7 +28,7 @@ $(document).ready(function () {
                             ' <p class="card-text">'+ destinasiku[i].deskripsi_singkat +'</p>'+
                             '<button class="btn btn-outline-primary btn-sm tambah_deskripsi ml-1" data-id ="'+destinasiku[i].id+'"><i class="fas fa-file"></i></button>'+
                             '<button class="btn btn-outline-primary btn-sm foto_destinasi ml-1" data-id ="'+destinasiku[i].id+'"><i class="fas fa-file-image"></i></button>'+
-                            '<button class="btn btn-outline-primary btn-sm show_data ml-1" data-id ="'+destinasiku[i].id+'"><i class="fas fa-info"></i></button>'+
+                            '<button class="btn btn-outline-primary btn-sm tampilkan_destinasi ml-1" data-id ="'+destinasiku[i].id+'"><i class="fas fa-info"></i></button>'+
                             '<button class="btn btn-outline-primary ubah_status btn-sm ml-1" data-id ="'+destinasiku[i].id+'">'+ destinasiku[i].status +'</button>'+
                         '</div>'+
                     '</div>'+
@@ -245,5 +245,44 @@ $('#cari').keyup(function () {
             }
         });
         return false;
+    });
+    // tampilkan data destinasi
+        $('#daftar_destinasku').on('click', '.tampilkan_destinasi', function () {
+        $('#tampilkan_destinasi').modal('show');
+        let id = $(this).data('id');
+        $.ajax({
+            type: 'post',
+            url: '/Destinasi/tampilkan_data_destinasi',
+            data:{
+                id: id
+            },
+            dataType: 'json',
+            success: function (data) {
+                let html = '<div class="carousel-item active">'+
+                                '<img src="/img/Destinasi/'+ data.foto_sampul.foto +'" class="d-block w-100" alt="...">'+
+                            '</div>';
+                let i;
+                let no = 1;
+                for (i = 0; i < data.foto.length ; i++) {
+                html +='<div class="carousel-item">'+
+                            '<img src="/img/Destinasi/'+ data.foto[i].foto +'" class="d-block w-100" alt="...">'+
+                        '</div>';
+                } 
+            $('#tampil_foto').html(html);
+
+                let html2 = '';
+                let j;
+                let no2 = 1;
+                for (j = 0; j < data.deskripsi.length ; j++) {
+                html2 +='<p class="text-justify">'+data.deskripsi[j].paragraf+'</p>';
+                } 
+                console.log(data.deskripsi);
+            $('#cerita_perjalanan').html(html2);
+                
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
+            }
+        });
     });
 });
