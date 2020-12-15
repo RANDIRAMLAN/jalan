@@ -24,4 +24,12 @@ class FotoDestinasiModel extends Model
     {
         return $this->where(['id_destinasi' => $id])->findAll();
     }
+    // hapus
+    public function hapus($id, $hapus_foto)
+    {
+        return $this
+            ->where(['id_destinasi' => $id])
+            ->where(['foto' => $hapus_foto])
+            ->delete();
+    }
 }

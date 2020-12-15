@@ -24,4 +24,12 @@ class DeskripsiModel extends Model
     {
         return $this->where(['id_destinasi' => $id])->findAll();
     }
+    // hapus
+    public function hapus($id, $paragraf)
+    {
+        return $this
+            ->where(['id_destinasi' => $id])
+            ->where(['paragraf' => $paragraf])
+            ->delete();
+    }
 }

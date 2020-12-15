@@ -143,6 +143,46 @@
                 </div>
             </div>
         </div>
+        <!-- ubah destinasi -->
+        <div class="modal fade" id="ubah_destinasi" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Cerita dan Foto Perjalanan</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- tabel cerita perjalanan -->
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Nomor</th>
+                                    <th scope="col">Cerita Perjalanan</th>
+                                    <th scope="col">Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody id="cerita">
+                            </tbody>
+                        </table>
+                        <!-- tabel foto perjalanan -->
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Nomor</th>
+                                    <th scope="col">Foto Perjalanan</th>
+                                    <th scope="col">Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody id="foto_foto">
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer"></div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 <?= $this->endSection(); ?>

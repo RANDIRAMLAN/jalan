@@ -220,4 +220,53 @@ class Destinasi extends BaseController
             return redirect()->to('/Menu/destinasiku');
         }
     }
+    // hapus cerita dan foto destinasi
+    public function cerita_dan_foto()
+    {
+        if ($this->request->isAJAX()) {
+            $id = $this->request->getVar('id');
+            $foto = $this->FotoDestinasiModel->cariById($id);
+            $deskripsi = $this->DeskripsiModel->cariById($id);
+            $data = [
+                'foto' => $foto,
+                'deskripsi' => $deskripsi
+            ];
+            echo json_encode($data);
+        } else {
+            return redirect()->to('/Menu/destinasiku');
+        }
+    }
+    // hapus paragraf
+    public function hapus_paragraf()
+    {
+        if ($this->request->isAJAX()) {
+            $id = $this->request->getVar('id');
+            $paragraf = $this->request->getVar('paragraf');
+            $this->DeskripsiModel->hapus($id, $paragraf);
+            $deskripsi = $this->DeskripsiModel->cariById($id);
+            $data = [
+                'deskripsi' => $deskripsi
+            ];
+            echo json_encode($data);
+        } else {
+            return redirect()->to('/Menu/destinasiku');
+        }
+    }
+    // hapus foto
+    public function hapus_foto()
+    {
+        if ($this->request->isAJAX()) {
+            $id = $this->request->getVar('id');
+            $hapus_foto = $this->request->getVar('foto');
+            $this->FotoDestinasiModel->hapus($id, $hapus_foto);
+            unlink('img/Destinasi/' . $hapus_foto);
+            $foto = $this->FotoDestinasiModel->cariById($id);
+            $data = [
+                'foto' => $foto
+            ];
+            echo json_encode($data);
+        } else {
+            return redirect()->to('/Menu/destinasiku');
+        }
+    }
 }
