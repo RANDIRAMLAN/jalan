@@ -77,6 +77,21 @@ class Destinasi extends BaseController
             return redirect()->to('/Menu/destinasiku');
         }
     }
+    // menampilkan list destinasi
+    public function destinasi()
+    {
+        if ($this->request->isAJAX()) {
+            $cari = $this->request->getVar('cari');
+            if ($cari) {
+                $destinasi = $this->DestinasiModel->mencari($cari);
+            } else {
+                $destinasi = $this->DestinasiModel->menampilkan();
+            }
+            echo json_encode($destinasi);
+        } else {
+            return redirect()->to('/');
+        }
+    }
     // ubah foto sampul
     public function foto_sampul()
     {

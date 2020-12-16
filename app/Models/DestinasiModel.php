@@ -35,11 +35,23 @@ class DestinasiModel extends Model
             ->orLike(['deskripsi_singkat' => $cari])
             ->findAll();
     }
-
+    // cari data destinasi
+    public function mencari($cari)
+    {
+        return $this
+            ->like(['judul_destinasi' => $cari])
+            ->orLike((['deskripsi_singkat' => $cari]))
+            ->findAll();
+    }
     // menampilkan destinasi berdasarkan data pengguna
     public function tampilkan($email)
     {
-        return $this->where(['penulis' => $email])->findAll();
+        return $this->where(['penulis' => $email])->orderby('created_at', 'DESC')->findAll();
+    }
+    //menampilkan data destinasi
+    public function menampilkan()
+    {
+        return $this->where(['status' => 'Aktif'])->orderby('created_at', 'DESC')->get(500)->getResultArray();
     }
     // cari destinasi by Id
     public function cariById($id)

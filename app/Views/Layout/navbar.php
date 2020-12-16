@@ -5,7 +5,7 @@
         <div class="col col-md-5">
             <form class="cari_destinasi" method="post">
                 <?= csrf_field(); ?>
-                <input type="text" class="form-control border-primary" placeholder="Cari Destinasi" id="cari" name="cari" autocomplete="off">
+                <input type="text" class="form-control border-primary cari" placeholder="Cari Destinasi" id="cari" name="cari" autocomplete="off">
             </form>
         </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
