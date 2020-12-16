@@ -3,8 +3,8 @@ $(document).ready(function () {
         location.href = '/Menu/destinasiku';
     });
     show_data_destinasi();
-    // menampilkan destinasiku
-        function show_data_destinasi() {
+    // menampilkan data destinasiku
+    function show_data_destinasi() {
         let cari = $('#cari').val();
         $.ajax({
             type: 'post',
@@ -42,213 +42,14 @@ $(document).ready(function () {
         error: function (xhr, ajaxOptions, thrownError) {
                 alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
             }
-    });
-} 
-// live search data
-$('#cari').keyup(function () {
-    show_data_destinasi();
-});
-// tambah Destinasi
-        $('.simpan_destinasi').submit('click', function () {
-        let judul_destinasi = $('#judul_destinasi').val();
-        let deskripsi_singkat = $('#deskripsi_singkat').val();
-        $.ajax({
-            tyoe: 'post',
-            url: '/Destinasi/tambah_destinasi',
-            data: {
-                judul_destinasi: judul_destinasi,
-                deskripsi_singkat: deskripsi_singkat
-            },
-            dataType: 'json',
-            success: function (response) {
-                if(response.error){
-                    if(response.error.judul_destinasi){
-                        $('#judul_destinasi').addClass('is-invalid');
-                        $('.error_judul_destinasi').html(response.error.judul_destinasi);
-                    }else{
-                        $('#judul_destinasi').removeClass('is-invalid');
-                        $('.error_judul_destinasi').html("");
-                    }
-                    if(response.error.deskripsi_singkat){
-                        $('#deskripsi_singkat').addClass('is-invalid');
-                        $('.error_deskripsi_singkat').html(response.error.deskripsi_singkat);
-                    }else{
-                        $('#deskripsi_singkat').removeClass('is-invalid');
-                        $('.error_deskripsi_singkat').html("");
-                    }
-                }else{
-                    $('.tambah_destinasi').removeClass("is-invalid");
-                    $('.tambah_destinasi').val("");
-                    $('.tambah_destinasi').html("");
-                    $('#buat_destinasi').modal('hide');
-                    $('#pesan').addClass('alert');
-                    $('#pesan').html(response.pesan);
-                    setTimeout(() => {
-                        $('#pesan').html("");
-                        $('#pesan').removeClass('alert');
-                    }, 3000);
-                    show_data_destinasi();
-                }
-            },
-            error: function (xhr, ajaxOptions, thrownError) {
-                alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
-            }
         });
-        return false;
+    } 
+    // live search data destinasiku
+    $('#cari').keyup(function () {
+        show_data_destinasi();
     });
-    // ubah foto sampul
-    $('.btn_ubah_sampul').click(function () {
-        let form = $('.ubah_foto_sampul')[0];
-        let data = new FormData(form);
-        $.ajax({
-            type: 'post',
-            url: '/Destinasi/foto_sampul',
-            data: data,
-            enctype: 'multipart/form-data',
-            processData: false,
-            contentType: false,
-            cache: false,
-            dataType: 'json',
-            success: function (response) {
-                if(response.error){
-                    if(response.error.foto_sampul){
-                        $('#foto_sampul').addClass('is-invalid');
-                        $('.error_foto_sampul').html(response.error.foto_sampul)
-                    }else{
-                        $('#foto_sampul').removeClass('is-invalid');
-                        $('.error_foto_sampul').html("");
-                    }
-                }else{
-                    $('#foto_sampul').removeClass("is-invalid");
-                    $('#foto_sampul').val("");
-                    $('.error_foto_sampul').html("");
-                    $('#ubah_foto_sampul').modal('hide');
-                    $('#pesan').addClass('alert');
-                    $('#pesan').html(response.pesan);
-                    setTimeout(() => {
-                        $('#pesan').html("");
-                        $('#pesan').removeClass('alert');
-                    }, 3000);
-                    show_data_destinasi();
-                }
-            },
-            error: function (xhr, ajaxOptions, thrownError) {
-                alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
-            }
-        });
-        return false;
-    });
-    // foto destinasi
-    $('.btn_foto_destinasi').click(function () {
-        let form = $('.tambah_foto_destinasi')[0];
-        let data = new FormData(form);
-        $.ajax({
-            type: 'post',
-            url: '/Destinasi/foto_destinasi',
-            data: data,
-            enctype: 'multipart/form-data',
-            processData: false,
-            contentType: false,
-            cache: false,
-            dataType: 'json',
-            success: function (response) {
-                if(response.error){
-                    if(response.error.foto_destinasi){
-                        $('#foto_destinasi').addClass('is-invalid');
-                        $('.error_foto_destinasi').html(response.error.foto_destinasi)
-                    }else{
-                        $('#foto_destinasi').removeClass('is-invalid');
-                        $('.error_foto_destinasi').html("");
-                    }
-                }else{
-                    $('#foto_destinasi').removeClass("is-invalid");
-                    $('#foto_destinasi').val("");
-                    $('.error_foto_destinasi').html("");
-                    $('#tambah_foto_destinasi').modal('hide');
-                    $('#pesan').addClass('alert');
-                    $('#pesan').html(response.pesan);
-                    setTimeout(() => {
-                        $('#pesan').html("");
-                        $('#pesan').removeClass('alert');
-                    }, 3000);
-                    show_data_destinasi();
-                }
-            },
-            error: function (xhr, ajaxOptions, thrownError) {
-                alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
-            }
-        });
-        return false;
-    });
-    // tambah deskripsi perjalanan
-    $('.tambah_deskripsi').submit('click', function () {
-        let id_deskripsi = $('#id_deskripsi').val();
-        let paragraf = $('#paragraf').val();
-        $.ajax({
-            type: 'post',
-            url: '/Destinasi/tambah_deskripsi',
-            data: {
-                id_deskripsi: id_deskripsi,
-                paragraf: paragraf
-            },
-            dataType: 'json',
-            success: function (response) {
-                if(response.error){
-                    if(response.error.paragraf){
-                        $('#paragraf').addClass('is-invalid');
-                        $('.error_paragraf').html(response.error.paragraf);
-                    }else{
-                        $('#paragraf').removeClass('is-invalid');
-                        $('.error_paragraf').html("");
-                    }
-                }else{
-                    $('#paragraf').removeClass("is-invalid");
-                    $('#paragraf').val("");
-                    $('.error_paragraf').html("");
-                    $('#tambah_deskripsi').modal('hide');
-                    $('#pesan').addClass('alert');
-                    $('#pesan').html(response.pesan);
-                    setTimeout(() => {
-                        $('#pesan').html("");
-                        $('#pesan').removeClass('alert');
-                    }, 3000);
-                    show_data_destinasi();
-                }
-            },
-            error: function (xhr, ajaxOptions, thrownError) {
-                alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
-            }
-        });
-        return false;
-    });
-    // ubah status destinasi
-    $('.ubah_status_destinasi').submit('click', function () {
-        let id_ubah = $('#id_ubah').val();
-        $.ajax({
-            type: 'post',
-            url: '/Destinasi/ubah_status_destinasi',
-            data: {
-                id_ubah: id_ubah
-            },
-            dataType: 'json',
-            success: function (response) {
-                $('#ubah_status_destinasi').modal('hide');
-                $('#pesan').addClass('alert');
-                $('#pesan').html(response.pesan);
-                setTimeout(() => {
-                    $('#pesan').html("");
-                    $('#pesan').removeClass('alert');
-                }, 3000);
-                show_data_destinasi();
-            },
-            error: function (xhr, ajaxOptions, thrownError) {
-                alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
-            }
-        });
-        return false;
-    });
-    // tampilkan data destinasi
-        $('#daftar_destinasku').on('click', '.tampilkan_destinasi', function () {
+    // tampilkan detail data destinasiku
+    $('#daftar_destinasku').on('click', '.tampilkan_destinasi', function () {
         $('#tampilkan_destinasi').modal('show');
         let id = $(this).data('id');
         $.ajax({
@@ -286,7 +87,7 @@ $('#cari').keyup(function () {
             }
         });
     });
-    // ubah cerita dan foto perjalanan
+    // tampilkan menu ubah cerita dan foto perjalanan
     $('#daftar_destinasku').on('click', '.ubah_destinasi', function () {
     $('#ubah_destinasi').modal('show');
     let id = $(this).data('id');
@@ -324,66 +125,6 @@ $('#cari').keyup(function () {
         },
         error: function (xhr, ajaxOptions, thrownError) {
             alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
-        }
-    });
-    });
-    // hapus paragraf
-    $('#cerita').on('click', '.hapus_paragraf', function () {
-        let id = $(this).data('id');
-        let paragraf = $(this).data('paragraf');
-        $.ajax({
-            type: 'post',
-            url: '/Destinasi/hapus_paragraf',
-            data: {
-                id: id,
-                paragraf:paragraf
-            },
-            dataType: 'json',
-            success: function (data) {
-                let html = '';
-                let i;
-                let no = 1;
-                for (i = 0; i < data.deskripsi.length; i++) {
-                html +='<tr>'+
-                            '<td>'+ no++ +'</td>'+
-                            '<td>'+ data.deskripsi[i].paragraf +'</td>'+
-                            '<td><button type="button" class="btn btn-outline-danger btn-sm hapus_paragraf" data-id="'+ data.deskripsi[i].id_destinasi +'" data-paragraf="'+ data.deskripsi[i].paragraf  +'">Hapus</button></td>'+
-                        '</tr>';
-                } 
-                $('#cerita').html(html);
-            },
-            error: function (xhr, ajaxOptions, thrownError) {
-                    alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
-        }
-        });
-    });
-        // hapus foto
-    $('#foto_foto').on('click', '.hapus_foto', function () {
-        let id = $(this).data('id');
-        let foto = $(this).data('foto');
-        $.ajax({
-            type: 'post',
-            url: '/Destinasi/hapus_foto',
-            data: {
-                id: id,
-                foto: foto
-            },
-            dataType: 'json',
-            success: function (data) {
-                let html = '';
-                let i;
-                let no = 1;
-                for (i = 0; i < data.foto.length; i++) {
-                html +='<tr>'+
-                            '<td>'+ no++ +'</td>'+
-                            '<td>'+ data.foto[i].foto +'</td>'+
-                            '<td><button type="button" class="btn btn-outline-danger btn-sm hapus_foto" data-id="'+ data.foto[i].id_destinasi +'" data-foto="'+ data.foto[i].foto  +'">Hapus</button></td>'+
-                        '</tr>';
-                } 
-                $('#foto_foto').html(html);
-            },
-            error: function (xhr, ajaxOptions, thrownError) {
-                    alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
         }
         });
     });
